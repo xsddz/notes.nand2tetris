@@ -29,7 +29,7 @@ notes.nand2tetris
 	nand2tetris/projects/05/Hello.hack
 	```
 
-+ [ ] ch06
++ [ ] ch06：doinng...
 + [ ] ch07
 + [ ] ch08
 + [ ] ch09
