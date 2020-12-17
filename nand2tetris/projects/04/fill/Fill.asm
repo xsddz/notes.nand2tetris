@@ -12,3 +12,59 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+(LOOP)
+	@KBD
+	D=M     // read keyboard value
+	@WHITE
+	D;JEQ   // if D==0 goto WHITE
+	@BLACK
+	D;JGT   // if D>0 goto BLACK
+	@LOOP
+	0;JMP   // goto LOOP
+
+(WHITE)
+	@render_value
+	M=0
+	@RENDER
+	0;JMP
+
+(BLACK)
+	@render_value
+	M=-1
+	@RENDER
+	0;JMP
+
+(RENDER)
+	@SCREEN
+	D=A
+	@addr
+	M=D     // addr -> SCREEN
+
+	@KBD
+	D=A
+	@n
+	M=D     // n -> KBD
+
+	@addr
+	D=M
+	@i
+	M=D    // i = addr
+
+	(LOOP_SCREEN)
+		@i
+		D=M
+		@n
+		D=D-M
+		@LOOP
+		D;JGE  // if i>=n goto LOOP 
+
+		@render_value
+		D=M    // get render value
+		@i
+		A=M
+		M=D    // RAM[i] = -1 or 0
+
+		@i
+		M=M+1  // i++
+		@LOOP_SCREEN
+		0;JMP  // goto LOOP_SCREEN

@@ -40,4 +40,34 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+    Mux16(b=instruction, sel=instruction[15],
+            out[15]=OPCode,
+            out[12]=COMPa, out[11]=COMPc1, out[10]=COMPc2, out[9]=COMPc3, out[8]=COMPc4, out[7]=COMPc5, out[6]=COMPc6,
+            out[5]=DESTd1, out[4]=DESTd2, out[3]=writeM,
+            out[2]=JUMPj1, out[1]=JUMPj2, out[0]=JUMPj3);
+
+    Or(a=OPCode, b=DESTd1, out=selIorDNot);
+    Not(in=selIorDNot, out=selIorD);
+    Mux16(a=outMinner, b=instruction, sel=selIorD, out=outIorD);
+    Xor(a=selIorDNot, b=DESTd1, out=loadIorDNot);
+    Not(in=loadIorDNot, out=loadIorD);
+    // Register(in=outIorD, load=loadIorD, out=outAorD, out[0..14]=addressM); // A Reg
+    ARegister(in=outIorD, load=loadIorD, out=outAorD, out[0..14]=addressM); // A Reg
+
+    // Register(in=outMinner, load=DESTd2, out=outALUx); // D Reg
+    DRegister(in=outMinner, load=DESTd2, out=outALUx); // D Reg
+    Mux16(a=outAorD, b=inM, sel=COMPa, out=outALUy);
+
+    ALU(x=outALUx, y=outALUy,
+        zx=COMPc1, nx=COMPc2, zy=COMPc3, ny=COMPc4, f=COMPc5, no=COMPc6,
+        out=outM, out=outMinner, zr=zr, ng=ng);
+
+    And(a=JUMPj1, b=ng, out=outL);
+    And(a=JUMPj2, b=zr, out=outE);
+    Or(a=zr, b=ng, out=zrng);
+    Not(in=zrng, out=Nzrng);
+    And(a=JUMPj3, b=Nzrng, out=outG);
+    Or8Way(in[0]=outL, in[1]=outE, in[2]=outG, out=outPCLoad);
+    Not(in=outPCLoad, out=outPCInc);
+    PC(in=outAorD, load=outPCLoad, inc=outPCInc, reset=reset, out[0..14]=pc);
 }

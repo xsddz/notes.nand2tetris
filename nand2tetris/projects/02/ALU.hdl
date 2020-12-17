@@ -43,4 +43,45 @@ CHIP ALU {
 
     PARTS:
    // Put you code here:
+   // 实现一：
+   // Mux16(a=x, sel=zx, out=outZX);
+   // Not16(in=outZX, out=outZXNX);
+   // Mux16(a=outZX, b=outZXNX, sel=nx, out=outX);
+
+   // Mux16(a=y, sel=zy, out=outZY);
+   // Not16(in=outZY, out=outZYNY);
+   // Mux16(a=outZY, b=outZYNY, sel=ny, out=outY);
+
+   // And16(a=outX, b=outY, out=outAndXY);
+   // Add16(a=outX, b=outY, out=outAddXY);
+   // Mux16(a=outAndXY, b=outAddXY, sel=f, out=outFXY);
+
+   // Not16(in=outFXY, out=outNFXY);
+   // Mux16(a=outFXY, b=outNFXY, sel=no, out=out, out[15]=ng, out[0..7]=out07, out[8..15]=out815);
+
+   // Or8Way(in=out07, out=outNZR1);
+   // Or8Way(in=out815, out=outNZR2);
+   // Or(a=outNZR1, b=outNZR2, out=outNZR);
+   // Not(in=outNZR, out=zr);
+
+   // 实现二：
+   Not16(out=zn16); // common zn
+   Not16(in=zn16, out=z16); // comon z
+
+   Not16(in=x, out=nX); // nx
+   Mux4Way16(a=x, b=z16, c=nX, d=zn16, sel[1]=nx, sel[0]=zx, out=outX);
+
+   Not16(in=y, out=nY); // ny
+   Mux4Way16(a=y, b=z16, c=nY, d=zn16, sel[1]=ny, sel[0]=zy, out=outY);
+
+   And16(a=outX, b=outY, out=outAndXY);
+   Not16(in=outAndXY, out=outAndXYnot);
+   Add16(a=outX, b=outY, out=outAddXY);
+   Not16(in=outAddXY, out=outAddXYnot);
+   Mux4Way16(a=outAndXY, b=outAddXY, c=outAndXYnot, d=outAddXYnot, sel[1]=no, sel[0]=f, out=out, out[15]=ng, out[0..7]=out07, out[8..15]=out815);
+
+   Or8Way(in=out07, out=outNZR1);
+   Or8Way(in=out815, out=outNZR2);
+   Or(a=outNZR1, b=outNZR2, out=outNZR);
+   Not(in=outNZR, out=zr);
 }
