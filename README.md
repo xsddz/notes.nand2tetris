@@ -2,7 +2,7 @@
 
 nand2tetris，中文译为“从与非门到俄罗斯方块”，手把手的教你如何从基础的与非门出发，一步一步构建现代计算机的硬件平台和软件体系。对理解底层计算机原理很有裨益，这里为本人的学习记录，毕竟好记性不如烂笔头。
 
-[nand2computer](img/nand2computer.png)
+![nand2computer](/img/nand2computer.png)
 
 
 ## 目录说明
