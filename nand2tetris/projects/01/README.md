@@ -39,16 +39,35 @@
 
 + 与门：And、And16
 
-	![Not](/img/ch01_And.png)
+	![And](/img/ch01_And.png)
 
 	16位版本的实现，可参考上面Not16。
 
 + 或门：Or、Or16、Or8Way
 
+	![Or](/img/ch01_Or.png)
+
+	16位版本的实现，可参考上面Not16。Or8Way实现如下：
+
+	![Or8Way](/img/ch01_Or.png)
+
 + 异或门：Xor
+
+	![Xor](/img/ch01_Xor.png)
 
 + 选择器：Mux、Mux16、Mux4Way16、Mux8Way16
 
+	![Mux](/img/ch01_Mux.png)
+
+	16位版本的实现，可参考上面Not16。Mux4Way16、Mux8Way16实现如下：
+
+	![Mux4Way16](/img/ch01_Mux4Way16.png)
+	![Mux8Way16](/img/ch01_Mux8Way16.png)
+
 + 反向选择器：DMux、DMux4Way、DMux8Way
+
+	![DMux](/img/ch01_DMux.png)
+	![DMux4Way](/img/ch01_DMux4Way.png)
+	![DMux8Way](/img/ch01_DMux8Way.png)
 
 
