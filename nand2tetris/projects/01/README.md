@@ -32,9 +32,16 @@
 + 非门：Not、Not16
 
 	![Not](/img/ch01_Not.png)
+
+	16位版本的实现，可以由16个Not门组成的阵列构建，每个Not门独立地处理各自对应的1位，示例如下：
+
 	![Not16](/img/ch01_Not16.png)
 
 + 与门：And、And16
+
+	![Not](/img/ch01_And.png)
+
+	16位版本的实现，可参考上面Not16。
 
 + 或门：Or、Or16、Or8Way
 
