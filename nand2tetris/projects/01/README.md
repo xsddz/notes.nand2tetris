@@ -8,7 +8,7 @@
 
 接下来基于与非门，构建以下逻辑门：
 
-| 基础逻辑门  | 16位版本 | 多通道版本 |
+| 基础逻辑门  | 16位逻辑门 | 多通道逻辑门 |
 | ----- | ----- | ----- |
 | Not | Not16 | |
 | And | And16 | |
@@ -49,7 +49,7 @@
 
 	16位版本的实现，可参考上面Not16。Or8Way实现如下：
 
-	![Or8Way](/img/ch01_Or.png)
+	![Or8Way](/img/ch01_Or8Way.png)
 
 + 异或门：Xor
 
@@ -71,11 +71,17 @@
 
 	![DMux](/img/ch01_DMux.png)
 
-	DMux4Way的实现如下：
+	DMux4Way的实现，参考下图真值表，忽略sel0时，考虑如下：
+	- sel1=0时，in的输入经过DMux后，输出对应为a和b；
+	- sel1=1是，in的输入经过DMux后，输出对应为c和d；
+	而忽略sel1时，考虑如下：
+	- sel0=0时，in的输入经过DMux后，输出对应为a和c；
+	- sel0=1是，in的输入经过DMux后，输出对应为b和d；
+	这样，对于以上4种输出的And组合，便可以得到a、b、c、d：
 
 	![DMux4Way](/img/ch01_DMux4Way.png)
 
-	DMux8Way实现如下：
+	同样的逻辑，基于已经实现的DMux4Way，DMux8Way的实现如下：
 
 	![DMux8Way](/img/ch01_DMux8Way.png)
 
