@@ -59,11 +59,16 @@
 
 	![Mux](/img/ch01_Mux.png)
 
-	16位版本的实现，可参考上面Not16。Mux4Way16实现如下：
+	16位版本的实现，可参考上面Not16。Mux4Way16的实现，考虑下图真值表，考虑如下：
+	- 对于sel1=1和sel0=1时，使用一个Mux16，那么可以在d与abc之间作出选择；
+	- 此时，忽略sel1，对于sel0的变化，使用一个Mux16在b与ac之间作出选择;
+	- 此时，忽略sel0，ac的选择，正好对应sel1的变化；
+
+	这样，Mux4Way16的实现如下：
 
 	![Mux4Way16](/img/ch01_Mux4Way16.png)
 
-	Mux8Way16实现如下：
+	同样的思路，基于已经实现的Mux4Way16逻辑门，Mux8Way16的实现如下：
 
 	![Mux8Way16](/img/ch01_Mux8Way16.png)
 
@@ -74,14 +79,16 @@
 	DMux4Way的实现，参考下图真值表，忽略sel0时，考虑如下：
 	- sel1=0时，in的输入经过DMux后，输出对应为a和b；
 	- sel1=1是，in的输入经过DMux后，输出对应为c和d；
+	
 	而忽略sel1时，考虑如下：
 	- sel0=0时，in的输入经过DMux后，输出对应为a和c；
 	- sel0=1是，in的输入经过DMux后，输出对应为b和d；
-	这样，对于以上4种输出的And组合，便可以得到a、b、c、d：
+	
+	这样，对于以上4种输出的And组合，便可以得到a、b、c、d，实现如下：
 
 	![DMux4Way](/img/ch01_DMux4Way.png)
 
-	同样的逻辑，基于已经实现的DMux4Way，DMux8Way的实现如下：
+	同样的思路，基于已经实现的DMux4Way逻辑门，DMux8Way的实现如下：
 
 	![DMux8Way](/img/ch01_DMux8Way.png)
 
