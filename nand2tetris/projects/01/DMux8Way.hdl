@@ -17,4 +17,14 @@ CHIP DMux8Way {
 
     PARTS:
     // Put your code here:
+    DMux4Way(in=in, sel[1]=sel[2], sel[0]=sel[0], a=outAC, b=outBD, c=outEG, d=outFH);
+    DMux4Way(in=in, sel[1]=sel[1], sel[0]=sel[0], a=outAE, b=outBF, c=outCG, d=outDH);
+    And(a=outAC, b=outAE, out=a);
+    And(a=outBD, b=outBF, out=b);
+    And(a=outAC, b=outCG, out=c);
+    And(a=outBD, b=outDH, out=d);
+    And(a=outEG, b=outAE, out=e);
+    And(a=outFH, b=outBF, out=f);
+    And(a=outEG, b=outCG, out=g);
+    And(a=outFH, b=outDH, out=h);
 }

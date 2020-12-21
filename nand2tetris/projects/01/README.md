@@ -27,7 +27,7 @@
 
 ## 实现
 
-注：每个门可能有多种不同的实现。
+注：每个门可能有多种不同的实现，下面的实现，会尽可能的使用已经构建好的逻辑门组件，以体现抽象、模块化、封装的理念。
 
 + 非门：Not、Not16
 
@@ -59,15 +59,24 @@
 
 	![Mux](/img/ch01_Mux.png)
 
-	16位版本的实现，可参考上面Not16。Mux4Way16、Mux8Way16实现如下：
+	16位版本的实现，可参考上面Not16。Mux4Way16实现如下：
 
 	![Mux4Way16](/img/ch01_Mux4Way16.png)
+
+	Mux8Way16实现如下：
+
 	![Mux8Way16](/img/ch01_Mux8Way16.png)
 
 + 反向选择器：DMux、DMux4Way、DMux8Way
 
 	![DMux](/img/ch01_DMux.png)
+
+	DMux4Way的实现如下：
+
 	![DMux4Way](/img/ch01_DMux4Way.png)
+
+	DMux8Way实现如下：
+
 	![DMux8Way](/img/ch01_DMux8Way.png)
 
 
