@@ -4,6 +4,7 @@ nand2tetris，又名“从与非门到俄罗斯方块”，手把手的教你从
 
 ![nand2computer](/img/nand2computer.png)
 
+![the-big-picture](/img/the-big-picture.png)
 
 ## 目录说明
 
