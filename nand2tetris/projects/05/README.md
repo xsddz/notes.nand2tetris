@@ -68,7 +68,7 @@ CPU芯片实现如下：
 
 ### 指令内存：ROM32K
 
-使用内建的ROM32K芯片，内部机制常见前面设计的RAMn芯片，不同的是，ROM是只读内存：
+使用内建的ROM32K芯片，内部实现见RAMn芯片的实现，不同的是，ROM是只读内存，用于烧录编译之后的机器语言指令：
 
 ![ROM32K](/img/ch05_ROM32K.png)
 
@@ -85,6 +85,7 @@ ComputerHello.tst
 Hello.asm          // 实现在屏幕左上角显示大些字母H的功能
 Hello.hack
 ```
+
 
 ## 小结
 
