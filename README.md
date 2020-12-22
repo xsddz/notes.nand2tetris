@@ -6,6 +6,7 @@ nand2tetris，又名“从与非门到俄罗斯方块”，手把手的教你从
 
 ![the-big-picture](/img/the-big-picture.png)
 
+
 ## 目录说明
 
 ```
@@ -42,3 +43,4 @@ notes.nand2tetris
 + nand2tetris官网: https://www.nand2tetris.org
 + 一个在线游戏：https://nandgame.com
 + logsisim：一个开源的数字逻辑电路设计和模拟软件
+
