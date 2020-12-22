@@ -52,11 +52,15 @@ CPU芯片实现如下：
 
 ### 屏幕I/O映像：Screen
 
-使用内建的Screen芯片，映射为8K的RAM存储单元。
+使用内建的Screen芯片，映射为8K的RAM存储单元：
+
+![Screen](/img/ch05_Screen.png)
 
 ### 键盘I/O映像：Keyboard
 
-使用内建的Keyboard芯片，映射为16bit的RAM存储单元，即一个16位寄存器。
+使用内建的Keyboard芯片，映射为16bit的RAM存储单元，即一个16位寄存器：
+
+![Keyboard](/img/ch05_Keyboard.png)
 
 ### 数据内存：Memory
 
@@ -64,7 +68,9 @@ CPU芯片实现如下：
 
 ### 指令内存：ROM32K
 
-使用内建的ROM32K芯片。
+使用内建的ROM32K芯片，内部机制常见前面设计的RAMn芯片，不同的是，ROM是只读内存：
+
+![ROM32K](/img/ch05_ROM32K.png)
 
 ### Computer
 
