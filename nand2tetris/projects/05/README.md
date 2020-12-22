@@ -42,7 +42,7 @@
 	3. 它向输出设备发送数据；
 
 	![Feng](/img/ch05_Feng.png)
-	
+
 + 读取-执行循环（read-execute cycle）：
 	1. 读取下一条指令；
 	2. 解码指令；
@@ -55,6 +55,12 @@
 ## 实现
 
 注：每个芯片可能有多种不同的实现，下面的实现，会尽可能的使用已经构建好的元件，以体现抽象、模块化、封装的理念。
+
+### Computer
+
+![Computer_Impl](/img/ch05_Computer_Impl.png)
+
+下面是该Computer各个组件的实现。
 
 ### CPU芯片
 
@@ -87,10 +93,6 @@ CPU芯片实现如下：
 使用内建的ROM32K芯片，内部实现见RAMn芯片的实现，不同的是，ROM是只读内存，用于烧录编译之后的机器语言指令：
 
 ![ROM32K](/img/ch05_ROM32K.png)
-
-### Computer
-
-![Computer_Impl](/img/ch05_Computer_Impl.png)
 
 ### 机器语言测试
 
