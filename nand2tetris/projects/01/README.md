@@ -13,7 +13,7 @@
 | Not | Not16 | |
 | And | And16 | |
 | Or | Or16 | Or8Way |
-| Xor | | 
+| Xor | | |
 | Mux | Mux16 | Mux4Way16 <br> Mux8Way16 |
 | DMux | | DMux4Way <br> DMux8Way |
 
