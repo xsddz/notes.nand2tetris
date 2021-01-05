@@ -24,7 +24,7 @@
 我们的汇编程序符合以下约定：
 + 文件名后缀：汇编形式为.asm，编译之后的二进制形式为.hack，
 + 机器指令：参见05章节设计cpu时的A指令和C指令，及约定的助记符。
-+ 伪指令：形式为`(symbol)`，用于标示代码位置，供goto语句使用。
++ 伪指令：形式为`(symbol)`，声明一个代码位置，symbol可供goto语句使用。
 + 符号（symbol）：以字母、数字、下划线组成的字符序列，且不能以数字开头。有以下几种：
 	- 预定义符号：R0-R15表示RAM内存地址为0到15的储存单元，RAM内存地址为0到4的储存单元还可以表示为：SP、LCL、ARG、THIS、THAT，SCREEN表示屏幕I/O映像后的RAM起始地址（值为16384），KBD表示好键盘I/O映像后的RAM地址（值为24576）；
 	- 标签符号：伪指令`(symbol)`中的symbol，且只能在伪指令处被定义一次，值为出现该伪指令的下一条指令在指令内存的地址。
@@ -37,10 +37,81 @@
 
 ## 实现
 
+这里将汇编器拆分为parser、code和symbol table三个模块，完整代码实现参见：https://github.com/xsddz/Advanced-Golang-Programming/tree/master/tinyassembler。
 
+### 语法分析器：parser
 
-代码参见：https://github.com/xsddz/Advanced-Golang-Programming/tree/master/tinyassembler
+对输入汇编代码文件进行语法分析，接口定义如下：
 
+```
+type Parser interface {
+	// 打开输入文件或输出流，为语法解析作准备
+	// New(file string)
+
+	// 输入中还有更多命令吗
+	HasMoreCommands() bool
+
+	// 从输入中读取下一条命令，将其当作“当前命令”，
+	// 仅当HasMoreCommands()为真时，才能调用该方法，
+	// 最初始的时候，没有“当前命令”
+	Advance()
+
+	// 返回当前命令的类型：
+	// - ACommand 当@xxx中的xxx是符号或者十进制数字时
+	// - CCommand 用于dest=comp;jump
+	// - LCommand 伪指令，当(xxx)中的xxx是符号时
+	CommandType() CommandT
+
+	// 返回形如@xxx或(xxx)的当前命令的符号或十进制值，
+	// 仅当CommandType()是ACommand或LCommand时才能调用
+	Symbol() string
+
+	// 返回当前C指令的dest助记符（共有8种形式），
+	// 仅当CommandType()是CCommand时才能调用
+	Dest() string
+	// 返回当前C指令的comp助记符（共有28种形式），
+	// 仅当CommandType()是CCommand时才能调用
+	Comp() string
+	// 返回当前C指令的jump助记符（共有8种形式），
+	// 仅当CommandType()是CCommand时才能调用
+	Jump() string
+}
+```
+
+### 符号编码器：code
+
+将所有汇编命令助记符翻译为对应的二进制码，接口定义如下：
+
+```
+type Code interface {
+	// 返回dest助记符对应的二进制码，3bits
+	Dest(string) string
+	// 返回comp助记符对应的二进制码，7bits
+	Comp(string) string
+	// 返回jump助记符对应的二进制码，3bits
+	Jump(string) string
+}
+```
+
+### 符号表：symbol table
+
+在符号标签和数字地址之间建立关联，接口定义如下：
+
+```
+type SymbolTable interface {
+	// 创建空的符号表
+	// New()
+
+	// 将(symbol, address)配对加入符号表
+	AddEntry(symbol string, address int)
+
+	// 符号表是否包含指定的symbol
+	Contains(symbol string) bool
+
+	// 返回与symbol关联的地址
+	GetAddress(symbol string) int
+}
+```
 
 ## 小结
 
