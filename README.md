@@ -26,7 +26,7 @@ notes.nand2tetris
 + [x] ch03：时序逻辑  ➮ nand2tetris/projects/03
 + [x] ch04：机器语言  ➮ nand2tetris/projects/04
 + [x] ch05：计算机体系结构  ➮ nand2tetris/projects/05
-+ [ ] ch06：汇编编译器  ➮ nand2tetris/projects/06
++ [x] ch06：汇编编译器  ➮ nand2tetris/projects/06
 + [ ] ch07
 + [ ] ch08
 + [ ] ch09
@@ -35,7 +35,7 @@ notes.nand2tetris
 + [ ] ch12
 + [ ] ch13
 
-以上，对应的每个project项目下，均增加一个`REAME.md`文件，以总结自己的学习。
+以上，对应的每个project项目下，均增加一个`REAME.md`文件，以做学习小结。
 
 
 ## 附A
