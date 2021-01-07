@@ -14,6 +14,7 @@ notes.nand2tetris
 ├── README.md
 ├── doc                // 文档
 ├── img                // 图片
+├── tools              // 整理的其他工具/软件
 ├── nand2tetris        // nand2tetris.zip 解压之后的学习记录及答案
 └── nand2tetris.zip    // nand2tetris官网下载的原始资源包
 ```
