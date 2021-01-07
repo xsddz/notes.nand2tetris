@@ -33,7 +33,7 @@
 
 + 文件名后缀：汇编形式为.asm，编译之后的二进制形式为.hack；
 + 机器指令：我们在ch05章节设计的cpu支持两条指令：A指令和C指令，如下图所示；
-	![CPU_Instruction](/img/ch06_CPU_Instruction.png)
+	![CPU Instruction](/img/ch06_CPU_Instruction.png)
 + 伪指令：形式为`(symbol)`，用于声明一个代码位置。
 + 符号（symbol）：以字母、数字、下划线组成的字符序列，且不能以数字开头。有以下几种：
 	- 预定义符号：R0-R15表示RAM内存地址为0到15的储存单元，RAM内存地址为0到4的储存单元还可以表示为：SP、LCL、ARG、THIS、THAT，SCREEN表示屏幕I/O映像后的RAM起始地址（值为16384），KBD表示好键盘I/O映像后的RAM地址（值为24576）；
@@ -47,7 +47,7 @@
 
 我们实现的汇编器编译过程如下图所示：
 
-![Assembler_Process](/img/ch06_Assembler_Process.png)
+![Assembler Process](/img/ch06_Assembler_Process.png)
 
 整体分为
 
@@ -131,5 +131,21 @@
 	}
 	```
 
+
 ### 小结
+
+为了说明我们编写的汇编程序在编译为二进制形式指令后，能够运行在我们前面构建的计算机硬件平台之上，下面考察上面实现环节中用于示例的计算最大值汇编程序的执行细节。
+
+![Load code](/img/ch06_Load_code.png)
+
+如上图所示，为了让该计算机执行这段被加载进指令内存的编译之后的二进制指令代码，
+1. 我们按下将`reset`置1，这样，cpu内部的PC元件输出被重置为0，经过导线之后作为指令内存的输入；
+2. 指令内存将地址为0的寄存器值作为输出，经过导线之后作为cpu一条指令输入；
+
+而cpu的实现，我们在前面的章节中已经给出，此时，指令内存地址为0处的指令`0000000000000000`到达cpu的指令输入引脚后，cpu内部（状态稳定之后）细节如下图所示，
+
+![CPU Detail](/img/ch06_CPU_Detail_000.png)
+
+
+
 
