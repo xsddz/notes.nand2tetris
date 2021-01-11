@@ -29,7 +29,7 @@ notes.nand2tetris
 + [x] ch05：计算机体系结构  ➮ nand2tetris/projects/05
 + [x] ch06：汇编编译器  ➮ nand2tetris/projects/06
 + [ ] ch07：虚拟机1：堆栈运算 ➮ nand2tetris/projects/07
-+ [ ] ch08
++ [ ] ch08：虚拟机2：程序控制 ➮ nand2tetris/projects/08
 + [ ] ch09
 + [ ] ch10
 + [ ] ch11
